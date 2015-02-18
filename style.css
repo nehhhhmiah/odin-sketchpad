@@ -1,0 +1,19 @@
+body {
+	text-align: center;
+}
+
+h1 {
+	font-size: 30pt;
+}
+
+button {
+	margin-bottom: 20px;
+}
+
+.marker {
+	width: 960px;
+	height: 960px;
+	border: 1px solid;
+	border-radius: 3%;
+	display: inline-block;
+}
