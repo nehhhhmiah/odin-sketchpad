@@ -1,20 +1,18 @@
 $(document).ready(function() {
-	gridSetup();
-});
+	$('#white').click(function() {
+		gridSetup();
+		setColor('white');
+	});
 
-$('#white').click(function() {
-	gridSetup();
-	setColor('white');
-});
+	$('#gradual').click(function() {
+		gridSetup();
+		setColor('gradual');
+	});
 
-$('#gradual').click(function() {
-	gridSetup();
-	setColor('gradual');
-});
-
-$('#color').click(function() {
-	gridSetup();
-	setColor('color')
+	$('#color').click(function() {
+		gridSetup();
+		setColor('color');
+	});
 });
 
 function gridSetup () {
@@ -32,21 +30,44 @@ function gridSetup () {
 
 function clearGrid () {
 	$('.grid').remove();
-	$marker = $('.marker');
-	$marker.append("<div class='grid'></div>");
+	var $marker = $('.marker');
+
 }
 
 function createGrid (length) {
-	for (var columns = 0; columns<length; columns++) {
-		
+	var blockDimension = 960/length;
+	for (var columns = 0; columns < length; columns++) {
+		for (var rows = 0; rows < length; rows++) {
+			var $block = $('<div class="grid"></div>');
+			$('.marker').append($block);
+			($block).css({"width": blockDimension +"px", "height": blockDimension + "px"});
+		}
 	}
 }
 
 function setColor (option) {
-
+	if (option === 'white') {
+		$('.grid').mouseenter(function() {
+			$(this).css("background-color", "white");
+		});
+	}
+	else if (option === 'gradual') {
+		$('.grid').mouseenter(function() {
+			$(this).css("opacity", $(this).css("opacity") * 0.75);
+		});
+	}
+	else if (option === 'color') {
+		$('.grid').mouseenter(function() {
+			$(this).css("background-color", randomColor());
+		});
+	}
 }
 
-function randomColor () {
 
+function randomColor () {
+	var red = Math.floor((Math.random() * 255)+1);
+	var green = Math.floor((Math.random() * 255)+1);
+	var blue = Math.floor((Math.random() * 255)+1);
+	return "rgb(" + red + "," + green + "," + blue + ")";
 }
 

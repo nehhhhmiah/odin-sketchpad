@@ -11,9 +11,14 @@ button {
 }
 
 .marker {
-	width: 960px;
-	height: 960px;
-	border: 1px solid;
-	border-radius: 3%;
+	width: 1000px;
+	height: 1000px;
 	display: inline-block;
+}
+
+.grid {
+	margin: 0;
+	padding: 0;
+	float: left;
+	background-color: black;
 }
